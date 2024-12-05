@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+
+
+
+.banner {
+    background-image: url('./assets/Banner.png');
+    background-color: rgb(0, 0, 0);
+}
+
+.Container {
+    background-image: url('./assets/Container.png');
+}
+
+.Estate {
+    background-image: url('./assets/Container.png');
+    background-color: red;
+}
+
+@keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    100% {
+      opacity: 10;
+      transform: translateY(4);
+    }
+  }
+  
+  .animate-fade-in-up {
+    animation: fadeInUp 7s ease-out forwards;
+  }
+  
