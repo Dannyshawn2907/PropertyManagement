@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Logo from "../../assets/Logo.png";
 import Tele from "../../assets/Tele.png";
 import Facebook from "../../assets/Facebook.png";
@@ -7,10 +8,21 @@ import Twitter from "../../assets/Twitter.png";
 import Youtub from "../../assets/Youtub.png";
 
 const Footer = () => {
+  const [email, setEmail] = useState("");
+  const navigate = useNavigate();
+
+  const handleEmailSubmit = () => {
+    if (email.trim() === "") {
+      alert("Please enter a valid email address.");
+      return;
+    }
+    navigate("/contact", { state: { email } });
+  };
+
   return (
     <footer className="bg-black text-white py-12">
       <div className="max-w-7xl mx-auto lg:flex px-6 lg:gap-36">
-        <div className="lg:">
+        <div className="lg:w-1/3">
           <div className="flex items-center space-x-2 mb-4">
             <div className="h-8 w-8 flex items-center justify-center">
               <img src={Logo} alt="Estatein Logo" className="h-full" />
@@ -23,26 +35,30 @@ const Footer = () => {
             <input
               type="email"
               placeholder="Enter Your Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               className="bg-transparent flex-grow text-sm px-2 py-2 outline-none placeholder-gray-400"
             />
-            <button>
+            <button onClick={handleEmailSubmit}>
               <img src={Tele} alt="Subscribe" className="h-6" />
             </button>
           </div>
         </div>
 
         <div className="grid grid-cols-2 gap-6 pt-6 lg:pt-0 lg:flex lg:gap-36">
-          <div className="">
+          <div>
             <h3 className="text-lg font-semibold pb-1">Home</h3>
             <ul className="space-y-2 text-sm">
               <li>Hero Section</li>
               <li>Features</li>
               <li>Properties</li>
               <li>Testimonials</li>
+              <li>Contact Form</li>
+              <li>Our Offices</li>
               <li>FAQs</li>
             </ul>
           </div>
-          <div className="">
+          <div>
             <h3 className="text-lg font-semibold pb-1">About Us</h3>
             <ul className="space-y-2 text-sm">
               <li>Our Story</li>
@@ -50,18 +66,20 @@ const Footer = () => {
               <li>How It Works</li>
               <li>Our Team</li>
               <li>Our Clients</li>
-              <li>Contact Form</li>
-              <li>Our Offices</li>
             </ul>
           </div>
-          <div className="">
+          <div>
             <h3 className="text-lg font-semibold pb-1">Properties</h3>
             <ul className="space-y-2 text-sm">
               <li>Portfolio</li>
               <li>Categories</li>
+              <li>Strategic Marketing</li>
+              <li>Negotiation Wizardry</li>
+              <li>Closing Success</li>
+              <li>Property Management</li>
             </ul>
           </div>
-          <div className="">
+          <div>
             <h3 className="text-lg font-semibold pb-1">Services</h3>
             <ul className="space-y-2 text-sm">
               <li>Valuation Mastery</li>
@@ -82,19 +100,6 @@ const Footer = () => {
               OLUWAKORE
             </span>
             . All Rights Reserved.
-            <span className="ml-4">Terms & Conditions</span>
-            <div className="py-8 text-justify pl-60 ">
-              <a
-                href="https://www.instagram.com/oluwakoretimi1"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline animate-pulse hover:text-blue-500"
-              >
-                <p className="text-balance text-center">
-                  <button>Developer Instagram Profile 🔝</button>
-                </p>
-              </a>
-            </div>
           </p>
           <div className="flex space-x-4">
             {[Facebook, Link, Twitter, Youtub].map((icon, index) => (
